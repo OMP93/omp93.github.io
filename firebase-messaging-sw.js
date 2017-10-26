@@ -12,6 +12,7 @@ self.addEventListener('push', function (event) {
     const data = JSON.parse(event.data.text());
 
     data.notification.data = data.data;
+    data.notification.url = 'wrgg';
 
     // console.log(data);
     // options.data = options;
@@ -19,13 +20,13 @@ self.addEventListener('push', function (event) {
         self.registration.showNotification(data.notification.title, data.notification)
     );
     // // Track open
-    // fetch('https://api.mailfire.io/v1/webpush/show/' + options.id, {
+    // fetch('https://api.mailfire.io/v1/webpush/show/' + data.data.id, {
     //     method: "post"
     // });
 });
 
 self.addEventListener('notificationclick', function (event) {
-    // event.notification.close();
+     //event.notification.close();
     console.log(event);
     // // Show page
     // event.waitUntil(
