@@ -10,6 +10,7 @@ firebase.messaging();
 
 self.addEventListener('push', function (event) {
     const options = JSON.parse(event.data.text());
+    options.data = options;
     console.log(options);
     // options.data = options;
     event.waitUntil(
