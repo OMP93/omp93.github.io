@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<button type="button" id="subscribe">Subscribe</button>
+<h1>Web push test</h1>
 
 <script type="text/javascript">
 
@@ -29,12 +29,7 @@
         if (Notification.permission === 'granted') {
             subscribe();
         }
-
-        // по клику, запрашиваем у пользователя разрешение на уведомления
-        // и подписываем его
-        $('#subscribe').on('click', function () {
-            subscribe();
-        });
+        subscribe();
     }
 
     function subscribe() {
