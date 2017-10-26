@@ -10,6 +10,8 @@ firebase.messaging();
 
 self.addEventListener('push', function (event) {
 
+    console.log(event);
+
     const data = JSON.parse(event.data.text());
 
     data.notification.data = data.data;
