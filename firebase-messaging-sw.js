@@ -6,7 +6,7 @@ firebase.initializeApp({
     messagingSenderId: '530470765559'
 });
 
-firebase.messaging();
+const messaging = firebase.messaging();
 
 messaging.onMessage(function(payload) {
     console.log("Message received. ", payload);
