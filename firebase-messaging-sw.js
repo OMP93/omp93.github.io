@@ -9,12 +9,14 @@ firebase.initializeApp({
 firebase.messaging();
 
 self.addEventListener('push', function (event) {
-    const options = JSON.parse(event.data.text());
-    options.notification.data = options;
-    console.log(options);
+    const data = JSON.parse(event.data.text());
+
+    data.notification.data = data.data;
+
+    // console.log(data);
     // options.data = options;
     event.waitUntil(
-        self.registration.showNotification(options.notification.title, options.notification)
+        self.registration.showNotification(data.notification.title, data.notification)
     );
     // // Track open
     // fetch('https://api.mailfire.io/v1/webpush/show/' + options.id, {
