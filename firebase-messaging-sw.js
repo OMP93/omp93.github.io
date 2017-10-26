@@ -14,7 +14,7 @@ self.addEventListener('push', function (event) {
     console.log(options);
     // options.data = options;
     event.waitUntil(
-        self.registration.showNotification(options.notification.title, options.notification)
+        self.registration.showNotification(options.notification.title, options)
     );
     // // Track open
     // fetch('https://api.mailfire.io/v1/webpush/show/' + options.id, {
