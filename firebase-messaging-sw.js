@@ -21,19 +21,23 @@ self.addEventListener('push', function (event) {
     // });
 });
 
-self.addEventListener('notificationclick', function (event) {
-    // event.notification.close();
-    console.log(event);
-    // // Show page
-    // event.waitUntil(
-    //     clients.matchAll({
-    //         type: "window"
-    //     }).then(function () {
-    //         return clients.openWindow(event.notification.data.url);
-    //     })
-    // );
-    // // Track click
-    // fetch('https://api.mailfire.io/v1/webpush/click/' + event.notification.data.id, {
-    //     method: "post"
-    // });
+self.addEventListener('notificationclick', function(event) {
+    const target = event.notification.data.click_action || '/';
+    event.notification.close();
+
+    // This looks to see if the current is already open and focuses if it is
+    event.waitUntil(clients.matchAll({
+        type: 'window',
+        includeUncontrolled: true
+    }).then(function(clientList) {
+        // clientList always is empty?!
+        for (var i = 0; i < clientList.length; i++) {
+            var client = clientList[i];
+            if (client.url == target && 'focus' in client) {
+                return client.focus();
+            }
+        }
+
+        return clients.openWindow(target);
+    }));
 });
