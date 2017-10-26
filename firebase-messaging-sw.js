@@ -23,7 +23,10 @@ self.addEventListener('push', function (event) {
 
 self.addEventListener('notificationclick', function (event) {
     // event.notification.close();
-    console.log(event);
+
+    const options = JSON.parse(event.data.text());
+    console.log(options);
+
     // // Show page
     // event.waitUntil(
     //     clients.matchAll({
