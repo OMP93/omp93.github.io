@@ -9,13 +9,12 @@ firebase.initializeApp({
 firebase.messaging();
 
 self.addEventListener('push', function (event) {
+
     const data = JSON.parse(event.data.text());
 
     data.notification.data = data.data;
-    data.notification.url = 'wrgg';
+    data.notification.data.url = data.notification.click_action;
 
-    // console.log(data);
-    // options.data = options;
     event.waitUntil(
         self.registration.showNotification(data.notification.title, data.notification)
     );
