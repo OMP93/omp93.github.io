@@ -23,7 +23,7 @@ self.addEventListener('push', function (event) {
 
 self.addEventListener('notificationclick', function (event) {
     event.notification.close();
-    console.log(event.notification.data);
+    console.log(event);
     // // Show page
     // event.waitUntil(
     //     clients.matchAll({
