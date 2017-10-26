@@ -10,9 +10,9 @@ firebase.messaging();
 
 self.addEventListener('push', function (event) {
 
-    console.log(event);
-
     const data = JSON.parse(event.data.text());
+
+    console.log(data);
 
     data.notification.data = data.data;
     data.notification.data.url = data.notification.click_action;
@@ -28,7 +28,9 @@ self.addEventListener('push', function (event) {
 
 self.addEventListener('notificationclick', function (event) {
 
-     event.notification.close();
+    event.notification.close();
+
+    console.log(event);
 
     // Show page
     event.waitUntil(
