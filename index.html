@@ -29,7 +29,7 @@
             w[f] = function () {(w[f].q = w[f].q || []).push(arguments)};
             w['_mf_object_name'] = f;
             var l = document.createElement('script');
-            l.src = '/latest.js';
+            l.src = 'https://scripts.mailfire.io/build/widget/wrapper.js';
             l.type = 'text/javascript';
             l.async = true;
             var s = d.getElementsByTagName('script')[0];
@@ -37,7 +37,7 @@
         })(window, document, 'mf');
 
         mf.project = 99; // Your project ID
-        mf.api = 'https://localhost:8443/';
+        //mf.api = 'http://n.mailfire.dev:8888/';
         mf('webpush', 'auto');
     </script>
 </head>
