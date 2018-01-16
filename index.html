@@ -1,49 +1,48 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="manifest" href="/manifest.json">
-    <title>Firebase Cloud Messaging</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.addEventListener('load', function () {
+            if (!'serviceWorker' in navigator) {
+                console.log('Service workers aren\'t supported in this browser.');
+                return;
+            }
+            navigator.serviceWorker.register('/sw.js').then(function (reg) {
+                if (reg.installing) {
+                    console.log('Service worker installing');
+                } else if (reg.waiting) {
+                    console.log('Service worker installed');
+                } else if (reg.active) {
+                    console.log('Service worker active');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        (function (w, d, f) {
+            w[f] = function () {(w[f].q = w[f].q || []).push(arguments)};
+            w['_mf_object_name'] = f;
+            var l = document.createElement('script');
+            l.src = 'https://scripts.mailfire.io/build/widget/wrapper.js';
+            l.type = 'text/javascript';
+            l.async = true;
+            var s = d.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(l, s);
+        })(window, document, 'mf');
+
+        mf.project = 99; // Your project ID
+        mf.api = 'http://n.mailfire.dev:8888/';
+        mf('webpush', 'auto');
+    </script>
 </head>
 <body>
 
-<h1>Web push test</h1>
-
-<script>
-    window.addEventListener('load', function () {
-        if (!'serviceWorker' in navigator) {
-            console.log('Service workers aren\'t supported in this browser.');
-            return;
-        }
-        navigator.serviceWorker.register('/sw.js').then(function (reg) {
-            if (reg.installing) {
-                console.log('Service worker installing');
-            } else if (reg.waiting) {
-                console.log('Service worker installed');
-            } else if (reg.active) {
-                console.log('Service worker active');
-            }
-        });
-    });
-</script>
-
-<script>
-    (function (w, d, f) {
-        w[f] = function () {(w[f].q = w[f].q || []).push(arguments)};
-        w['_mf_object_name'] = f;
-        var l = document.createElement('script');
-        l.src = 'https://scripts.mailfire.io/build/widget/wrapper.js';
-        l.type = 'text/javascript';
-        l.async = true;
-        var s = d.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(l, s);
-    })(window, document, 'mf');
-
-    mf.project = 18; // Your project ID
-
-    mf('webpush', 'subscribe'); // Showing popup after some time
-    // or mf('webpush', 'init'); // Just prepare
-</script>
+FCM works!
 </body>
 </html>
